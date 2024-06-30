@@ -5,6 +5,10 @@ main() => runApp(PerguntaApp());
 class PerguntaApp extends StatelessWidget {
   PerguntaApp({super.key});
 
+  void responder() {
+    print('Perunta respondida');
+  }
+
   final perguntas = [
     'Qual é a sua cor favorita?',
     'Qual é o seu animal favorito?'
@@ -20,17 +24,17 @@ class PerguntaApp extends StatelessWidget {
         body: Column(
           children: [
             Text(perguntas[0]),
-            const ElevatedButton(
-              onPressed: null,
-              child: Text('Resposta 1')
+            ElevatedButton(
+              onPressed: responder,
+              child: const Text('Resposta 1')
             ),
-            const ElevatedButton(
-              onPressed: null,
-              child: Text('Resposta 2')
+            ElevatedButton(
+              onPressed: responder,
+              child: const Text('Resposta 2')
             ),
-            const ElevatedButton(
-              onPressed: null,
-              child: Text('Resposta 3')
+            ElevatedButton(
+              onPressed: responder,
+              child: const Text('Resposta 3')
             ),
           ],
         ),

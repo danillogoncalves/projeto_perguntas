@@ -7,12 +7,10 @@ main() => runApp(PerguntaApp());
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
 
-  void _proximaPergunta() {
-    if (_perguntaSelecionada < 1) {
-      setState(() {
-        _perguntaSelecionada++;
-      });
-    }
+  void _responder() {
+    setState(() {
+      _perguntaSelecionada++;
+    });
   }
 
   @override
@@ -20,17 +18,18 @@ class _PerguntaAppState extends State<PerguntaApp> {
     final List<Map<String, Object>> perguntas = [
       {
         'texto': 'Qual é a sua cor favorita?',
-        'respotas': ['Preto', 'Vermelho', 'Verde', 'Branco']
+        'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco']
       },
       {
         'texto': 'Qual é o seu animal favorito?',
-        'respotas': ['Coelho', 'Cobra', 'Elefante', 'Leão']
+        'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão']
       },
       {
         'texto': 'Qual é o seu instrutor favorito?',
-        'respotas': ['Maria', 'João', 'Leo', 'Pedro']
+        'respostas': ['Maria', 'João', 'Leo', 'Pedro']
       }
     ];
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -39,9 +38,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           children: [
             Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
-            Resposta("Resposta 1", _proximaPergunta),
-            Resposta("Resposta 2", _proximaPergunta),
-            Resposta("Resposta 3", _proximaPergunta),
+            ...(perguntas[_perguntaSelecionada]['respostas'] as List<String>)
+                .map((reposta) => Resposta(reposta, _responder))
+                .toList(),
           ],
         ),
       ),

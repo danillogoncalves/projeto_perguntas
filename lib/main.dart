@@ -51,7 +51,12 @@ class _PerguntaAppState extends State<PerguntaApp> {
                       .map((reposta) => Resposta(reposta, _responder)),
                 ],
               )
-            : null,
+            : const Center(
+                child: Text(
+                  'Parabéns!',
+                  style: TextStyle(fontSize: 28),
+                ),
+              ),
       ),
     );
   }

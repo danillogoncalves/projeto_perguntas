@@ -12,8 +12,7 @@ class Resultado extends StatelessWidget {
       return 'Você é bom!';
     } else if (pontuacao < 16) {
       return 'Impressionante!';
-    } else 
-    {
+    } else {
       return 'Nível Jedi!';
     }
   }
@@ -22,9 +21,9 @@ class Resultado extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-          fraseResultado,
-          style: const TextStyle(fontSize: 28),
-        ),
+        fraseResultado,
+        style: const TextStyle(fontSize: 28),
+      ),
     );
   }
 }
